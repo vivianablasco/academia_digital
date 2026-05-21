@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Digital - Cursos de Programación e IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a66c2;
+            --primary-dark: #054aa1;
+            --accent: #ff6b35;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: white;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #b45309;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--bg-light);
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* AREAS */
+        .areas {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 2rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            animation: scaleIn 0.5s ease-out backwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .card:nth-child(5) {
+            animation-delay: 0.9s;
+        }
+
+        .card:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* MODALIDADES */
+        .modalidades {
+            background: linear-gradient(135deg, #f0f4ff, #fff5f0);
+            margin: 4rem 0;
+            padding: 4rem 2rem;
+        }
+
+        .grid-2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-box ul {
+            list-style: none;
+        }
+
+        .feature-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .feature-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), #0054cc);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .cta-final h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-final a {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .cta-final a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                display: none;
+            }
+
+            nav a {
+                margin: 0.5rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-final {
+                margin: 2rem 1rem;
+            }
+
+            .cta-final h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Academia Digital</a>
+            <nav>
+                <a href="#areas">Cursos</a>
+                <a href="#modalidades">Modalidades</a>
+                <a href="#cta">Contacto</a>
+            </nav>
+            <button class="cta-button"
+                onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'})">Inscribirme</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">Nuevas cohortes abiertas</div>
+        <h1>Aprendé lo que mueve al mundo digital</h1>
+        <p class="subtitle">Cursos en vivo y on-demand de programación, IA y marketing digital. Formá tu carrera con
+            instructores que trabajan en la industria.</p>
+        <div class="hero-buttons">
+            <button class="cta-button"
+                onclick="document.getElementById('areas').scrollIntoView({behavior: 'smooth'})">Ver cursos</button>
+            <button class="btn-secondary"
+                onclick="document.getElementById('modalidades').scrollIntoView({behavior: 'smooth'})">Cómo
+                aprenderás</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">+2.000</div>
+                <div class="stat-label">Estudiantes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">+30</div>
+                <div class="stat-label">Cursos</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">+15</div>
+                <div class="stat-label">Instructores</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfacción</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AREAS -->
+    <section id="areas" class="areas">
+        <h2 class="section-title">Áreas de formación</h2>
+        <p class="section-subtitle">Todo lo que necesitás para ser digital</p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>🔧 Programación</h3>
+                <p>Fundamentos sólidos, lógica y buenas prácticas desde cero.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 Frontend</h3>
+                <p>HTML, CSS, JavaScript y frameworks modernos como React.</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Backend</h3>
+                <p>APIs, Node.js, arquitectura y servicios en la nube.</p>
+            </div>
+            <div class="card">
+                <h3>📊 Bases de datos</h3>
+                <p>SQL, NoSQL, modelado de datos y optimización.</p>
+            </div>
+            <div class="card">
+                <h3>🤖 Inteligencia Artificial</h3>
+                <p>Fundamentos, prompts avanzados y aplicaciones prácticas.</p>
+            </div>
+            <div class="card">
+                <h3>📱 Marketing Digital</h3>
+                <p>Estrategia, contenido, SEO y métricas de performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALIDADES -->
+    <section id="modalidades" class="modalidades">
+        <div class="grid-2">
+            <div class="feature-box">
+                <h3>Cursos Sincrónicos 🎓</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-light);">Clases en vivo con instructores expertos.
+                </p>
+                <ul>
+                    <li>Interacción en tiempo real</li>
+                    <li>Mentorías grupales directas</li>
+                    <li>Comunidad activa</li>
+                    <li>Resolución de dudas inmediata</li>
+                </ul>
+            </div>
+            <div class="feature-box">
+                <h3>Cursos Asincrónicos 📚</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-light);">Aprende a tu ritmo, cuando y donde quieras.
+                </p>
+                <ul>
+                    <li>Acceso 24/7 al contenido</li>
+                    <li>Avanza a tu propio ritmo</li>
+                    <li>Material descargable</li>
+                    <li>Soporte por comunidad</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="cta" class="cta-final">
+        <h2>Tu próximo nivel empieza hoy</h2>
+        <p>Sumate a Academia Digital y transformá tu carrera con habilidades reales para el mundo digital.</p>
+        <a href="https://www.instagram.com/academiadigital.sl/" target="_blank">📲 Instagram</a>
+        <a href="mailto:hola@academiadigital.com">✉️ Enviar email</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Academia Digital</strong></p>
+        <p>© 2026 Todos los derechos reservados</p>
+        <p><a href="https://www.instagram.com/academiadigital.sl/" target="_blank">@academiadigital.sl</a></p>
+    </footer>
+    <script async type='module'
+        src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-chatbot-embed is-popup='true'
+        chatbot-id='cmpfg3knj3bkf0nay1cmt737m'></zapier-interfaces-chatbot-embed>
+
+</body>
+
+</html>
