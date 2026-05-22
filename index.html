@@ -408,6 +408,30 @@
             text-decoration: underline;
         }
 
+        .chatbot-bubble {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 64px;
+            height: 64px;
+            background: #2563eb;
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-bubble:hover {
+            background: #1d4ed8;
+            transform: scale(1.08);
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 {
@@ -549,14 +573,14 @@
                     <li>Soporte por comunidad</li>
                 </ul>
             </div>
-        </div>
-        <!-- Burbuja flotante chatbot -->
-        <a href="https://academia-digital.zapier.app/" target="_blank" class="chatbot-bubble"
-            aria-label="Abrir chatbot">
-            💬
-        </a>
-    </section>
 
+        </div>
+
+    </section>
+    <!-- Burbuja flotante chatbot 
+    <a href="https://academia-digital.zapier.app/" target="_blank" class="chatbot-bubble" aria-label="Abrir chatbot">
+        💬
+    </a> -->
     <!-- CTA FINAL -->
     <section id="cta" class="cta-final">
         <h2>Tu próximo nivel empieza hoy</h2>
@@ -572,7 +596,10 @@
         <p><a href="https://www.instagram.com/academiadigital.sl/" target="_blank">@academiadigital.sl</a></p>
     </footer>
 
-
+    <script type="module"
+        src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
+    <zapier-interfaces-chatbot-embed is-popup="true"
+        chatbot-id="cmpfg3l9p005itzmuhes6souw"></zapier-interfaces-chatbot-embed>
 
 </body>
 
